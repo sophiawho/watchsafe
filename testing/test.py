@@ -7,5 +7,5 @@ model = app.models.get("moderation")
 
 #predict 
 #print model.predict("girl.jpeg")
-image = ClImage(file_obj=open('girl.jpeg', 'rb'))
+image = ClImage(file_obj=open('gorey.jpg', 'rb'))
 print(model.predict([image]))
