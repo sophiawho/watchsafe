@@ -89,10 +89,13 @@
                 <div class="user-input">
                     <input id="type-input" type="text" value="Audio Url Link" autocomplete="off"/>
                     Alcohol threshold:
-                    <input type="range" name="alcohol" min="0" max="100">
-                    <input type="range" name="drugs" min="0" max="100">
-                    <input type="range" name="nudity" min="0" max="100">
-                    <input type="range" name="weapon" min="0" max="100">
+                    <input type="range" id="alcohol" min="0" max="1" step=any value="0.5">
+                    Drugs threshold:
+                    <input type="range" id="drugs" min="0" max="1" step=any value="0.5">
+                    Nudity threshold:
+                    <input type="range" id="nudity" min="0" max="1" step=any value="0.5">
+                    Weapon threshold:
+                    <input type="range" id="weapon" min="0" max="1" step=any value="0.5">
 <!--                     <input id="file-input" type="file" value="Audio File"/>
  -->                </div>
                 <div class="submit-container">
@@ -115,9 +118,16 @@
 //            var url = window.location.protocol + "//" + window.location.host + "/insert
             var prefix = "https://api.sightengine.com/1.0/video/check.json?models=nudity,wad,faces,face-attributes,celebrities&stream_url=";
             var inputLink = $("#type-input").val(); // make sure form input has https://
+            var alcoholSlider = $("#alcohol").val();
+            var drugSlider = $("#drugs").val();
+            var nuditySlider = $("#nudity").val();
+            var weaponSlider = $("#weapon").val();
+            console.log("Alcohol: +" + alcoholSlider);
             var suffix = "&callback_url=http://watchsafehtv.us-east-1.elasticbeanstalk.com/";
-            var credentials = "&api_user=1051134213&api_secret=NHSHEEAmrEdxkapSmt8F"
-            var url = prefix + inputLink + suffix + 'callback' + credentials;
+            var credentials = "&api_user=258566145&api_secret=nGGUMmk7CsQ6463MHQjY"
+            var thresholds = "&callthreshold_nudity_raw=" + nuditySlider + "&callthreshold_nudity_partial=" + nuditySlider + 
+                "&callthreshold_weapon=" + weaponSlider + "&callthreshold_alcohol=" + alcoholSlider + "&callthreshold_drugs=" + drugSlider;
+            var url = prefix + inputLink + suffix + 'callback' + credentials + thresholds;
             console.log("URL: " + url);
 //            $.ajax({
 //                url: url,
