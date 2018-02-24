@@ -88,8 +88,13 @@
             <form style="display: flex" onsubmit="myFunction(); return false;">
                 <div class="user-input">
                     <input id="type-input" type="text" value="Audio Url Link" autocomplete="off"/>
-                    <input id="file-input" type="file" value="Audio File"/>
-                </div>
+                    Alcohol threshold:
+                    <input type="range" name="alcohol" min="0" max="100">
+                    <input type="range" name="drugs" min="0" max="100">
+                    <input type="range" name="nudity" min="0" max="100">
+                    <input type="range" name="weapon" min="0" max="100">
+<!--                     <input id="file-input" type="file" value="Audio File"/>
+ -->                </div>
                 <div class="submit-container">
                     <input id="submit" type="submit" value="Submit" />
                 </div>
@@ -105,9 +110,14 @@
 
     <script>
         function myFunction() {
+//   'https://api.sightengine.com/1.0/video/check.json?models=nudity,wad,faces,face-attributes,celebrities&stream_url=https://wowza.jwplayer.com/live/jelly.stream/playlist.m3u8&callback_url=protocol://yourcallback&api_user=258566145&api_secret=nGGUMmk7CsQ6463MHQjY'
+// '1051134213', 'NHSHEEAmrEdxkapSmt8F'
 //            var url = window.location.protocol + "//" + window.location.host + "/insert
-            var url = "http://watchsafehtv.us-east-1.elasticbeanstalk.com/test"
-            var inputLink = $("#type-input").val();
+            var prefix = "https://api.sightengine.com/1.0/video/check.json?models=nudity,wad,faces,face-attributes,celebrities&stream_url=";
+            var inputLink = $("#type-input").val(); // make sure form input has https://
+            var suffix = "&callback_url=http://watchsafehtv.us-east-1.elasticbeanstalk.com/";
+            var credentials = "&api_user=1051134213&api_secret=NHSHEEAmrEdxkapSmt8F"
+            var url = prefix + inputLink + suffix + 'callback' + credentials;
             console.log("URL: " + url);
 //            $.ajax({
 //                url: url,
@@ -123,9 +133,14 @@
 //            });
             $.ajax({
                 url: url,
-                type: 'POST',
+                type: 'GET',
                 success: (a,b,c) => {
+                    var callback_id = a.media.id;
+                    var redir_url = prefix + inputLink + suffix + callback_id + credentials;
                     console.log(a);
+                    console.log(url);
+                    console.log(a.media.id);
+                    window.location = "http://watchsafehtv.us-east-1.elasticbeanstalk.com/response/" + callback_id;
                 },
                 error: (a,b,c) => {
                     console.log(a);

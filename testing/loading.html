@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loading</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700' rel='stylesheet' type='text/css'>
+</head>
+<style>
+	.fond{position:absolute;padding-top:335px;top:0;left:0; right:0;bottom:0;
+	 background-color:#e7e7e7;}
+
+	.contener_ball
+	{
+		height:115px;
+		width:90px;
+		overflow:hidden;
+	} 
+	.ball_bleu
+	{
+		border-radius:30px;
+		width:30px;
+		-webkit-animation:anim 1s infinite ease;
+		-moz-animation:anim 1s infinite ease;
+		-ms-animation:anim 1s infinite ease;
+		-o-animation:anim 1s infinite ease;
+		animation:anim 1s infinite ease;
+	} 
+	.ombre_bleu
+	{
+		border-radius:30px;
+		display:inline-block;
+		background-color:rgba(153,153,153,0.2);
+		box-shadow:1px 1px 8px #999999;
+		-webkit-animation:anim_ombre 1s infinite ease;
+		-moz-animation:anim_ombre 1s infinite ease;
+		-ms-animation:anim_ombre 1s infinite ease;
+		-o-animation:anim_ombre 1s infinite ease;
+		animation:anim_ombre 1s infinite ease;
+	} 
+	@-webkit-keyframes anim
+	{
+		0%{height:30px;margin-top:0px;background-color:#CB2025;}
+		25%{height:15px;margin-top:100px;background-color:#F8B334;}
+		100%{height:30px;margin-top:0px;background-color:#CB2025;}
+	} 
+	@-webkit-keyframes anim_ombre
+	{
+		0%{width:90px;height:2px;}
+		25%{width:30px;height:2px;}
+		100%{width:90px;height:2px;}
+	} 
+	@-moz-keyframes anim
+	{
+		0%{height:30px;margin-top:0px;background-color:#CB2025;}
+		25%{height:15px;margin-top:100px;background-color:#F8B334;}
+		100%{height:30px;margin-top:0px;background-color:#CB2025;}
+	} 
+	@-moz-keyframes anim_ombre
+	{
+		0%{width:90px;height:2px;}
+		25%{width:30px;height:2px;}
+		100%{width:90px;height:2px;}
+	} 
+	@-ms-keyframes anim
+	{
+		0%{height:30px;margin-top:0px;background-color:#CB2025;}
+		25%{height:15px;margin-top:100px;background-color:#F8B334;}
+		100%{height:30px;margin-top:0px;background-color:#CB2025;}
+	} 
+	@-ms-keyframes anim_ombre
+	{
+		0%{width:90px;height:2px;}
+		25%{width:30px;height:2px;}
+		100%{width:90px;height:2px;}
+	} 
+	@keyframes anim
+	{
+		0%{height:30px;margin-top:0px;background-color:#CB2025;}
+		25%{height:15px;margin-top:100px;background-color:#F8B334;}
+		100%{height:30px;margin-top:0px;background-color:#CB2025;}
+	} 
+	@keyframes anim_ombre
+	{
+		0%{width:90px;height:2px;}
+		25%{width:30px;height:2px}
+		100%{width:90px;height:2px;}
+	}
+</style>
+<body>
+	<div align="center" class="fond">
+	<div align="center" syle="width:90px; height:115px;">
+	<div class="contener_ball">
+	<div class="ball_bleu"></div>
+	</div>
+	<div class="ombre_bleu"></div>
+</div>
+</body>
+</html>
