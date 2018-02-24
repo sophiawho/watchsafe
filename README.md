@@ -2,27 +2,27 @@
 
 ## Hack The Valley II
 
-watchsafe uses computer vision to scan video clips for nsfw content (drugs/nudity/gore)
+*watchsafe* uses **computer vision** to scan video clips for nsfw content (drugs/nudity/gore)
 
-###technology:
+### technology:
 1. clarifai/microsoft custom vision
 2. python (flask)
 3. node.js backend
 
-###challenges:
+### challenges:
 1. rate-limiting api
 2. getting clarifai to return second of video
 
-###applications:
+### applications:
 1. nanny cam
 2. teachers, parents showing movies
 3. crime scenes
 
-###primary goals:
+### primary goals:
 1. be able to mark certain kinds of nsfw content
 2. mark the start/end of nsfw content
 3. deploy onto web app
 
-###secondary goals:
+### secondary goals:
 1. chrome extension
 2. live black-out
