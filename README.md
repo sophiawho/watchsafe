@@ -33,3 +33,7 @@ In the future, we'd like to:
 * SightEngine API
 * Flask back-end
 * Deployed on Amazon AWS
+
+### Links
+[Video Demo](https://www.youtube.com/watch?v=_Wwa5B8vHKo "Video Demo")
+[Devpost](https://devpost.com/software/watchsafe "Devpost")
