@@ -9,7 +9,7 @@
 ![Image Not Found](preview2.png)
 
 ## Loading Page
-![GIF not found](http://www.giphy.com/gifs/jxdXhat9e6xGSzI1Wo)
+![GIF not found](loading.gif)
 
 ## Analytics Page
 ![Image Not Found](preview4.png)
