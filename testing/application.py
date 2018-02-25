@@ -26,15 +26,10 @@ def uh():
     return "yes"
 
 # dynamic response
-@application.route("/response/<id>", methods=['GET', 'PUT'])
+@application.route("/response/<id>")
 def lala(id):
-    if request.method == 'GET':
-        content = open('loading.html').read()
-        return Response(content, mimetype="text/html")
-    else:
-        thisData = json.dumps(request.json)
-        print("hi")
-        return("received post")
+    content = open('analytics.html').read()
+    return Response(content, mimetype="text/html")
 
 @application.route("/test", methods=['POST'])
 def whee():
@@ -52,8 +47,7 @@ def callback():
             print('done')
             return('', 200)
         else:
-            print("not finished")
-            # socketio.emit('my response', data, namespace='/'+data['media']['id'])
+            socketio.emit('my response', data, namespace='/'+data['media']['id'])
             return('', 204)
 
 

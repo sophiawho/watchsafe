@@ -2,9 +2,9 @@
 // initialize our arrays
 var x = [],
 nudey = [],
-weapony [],
+weapony = [],
 alcoholy = [], 
-drugsy[];
+drugsy = [];
 
 data = JSON.parse(msg);
 
