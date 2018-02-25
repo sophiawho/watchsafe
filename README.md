@@ -35,5 +35,5 @@ In the future, we'd like to:
 * Deployed on Amazon AWS
 
 ### Links
-[Video Demo](https://www.youtube.com/watch?v=_Wwa5B8vHKo "Video Demo")
-[Devpost](https://devpost.com/software/watchsafe "Devpost")
+* [Video Demo](https://www.youtube.com/watch?v=_Wwa5B8vHKo "Video Demo")
+* [Devpost](https://devpost.com/software/watchsafe "Devpost")
