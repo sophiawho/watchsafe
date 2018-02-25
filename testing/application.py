@@ -18,7 +18,6 @@ CORS(application)
 def hello():
     # return "Hello World"
     content = open('index.html').read()
-    # emit('my response', {'data': 'got it!'})
     return Response(content, mimetype="text/html")
 
 @application.route("/test")
@@ -49,17 +48,12 @@ def callback():
         return 'success'
     else:
         if (data['data']['status'] == 'finished'):
-            # url_id = data['media']['id']
-            # url = "http://watchsafehtv.us-east-1.elasticbeanstalk.com/response/" + url_id
-            # print("finished " + url)
-            # r = requests.put(url, data=data)
-            # print('reeee' + r.text)
-            # return('yay')
             socketio.emit('my response', data, namespace='/'+data['media']['id'])
+            print('done')
             return('', 200)
         else:
             print("not finished")
-            socketio.emit('my response', data, namespace='/'+data['media']['id'])
+            # socketio.emit('my response', data, namespace='/'+data['media']['id'])
             return('', 204)
 
 

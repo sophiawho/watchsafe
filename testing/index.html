@@ -231,8 +231,6 @@
         })
 
       function myFunction() {
-//   'https://api.sightengine.com/1.0/video/check.json?models=nudity,wad,faces,face-attributes,celebrities&stream_url=https://wowza.jwplayer.com/live/jelly.stream/playlist.m3u8&callback_url=protocol://yourcallback&api_user=258566145&api_secret=nGGUMmk7CsQ6463MHQjY'
-// '1051134213', 'NHSHEEAmrEdxkapSmt8F'
 //            var url = window.location.protocol + "//" + window.location.host + "/insert
             var prefix = "https://api.sightengine.com/1.0/video/check.json?models=nudity,wad,faces,face-attributes,celebrities&stream_url=";
             var inputLink = $("#type-input").val(); // make sure form input has https://
@@ -241,6 +239,7 @@
             var nuditySlider = $("#nudity").val();
             var weaponSlider = $("#weapon").val();
             console.log("Alcohol: +" + alcoholSlider);
+//            var suffix = "&callback_url=" + window.location.protocol + "//" + window.location.host + "/callback";
             var suffix = "&callback_url=http://watchsafehtv.us-east-1.elasticbeanstalk.com/";
             var credentials = "&api_user=104553215&api_secret=MapSBjZqrwsB4GVT96nZ"
             var thresholds = "&callthreshold_nudity_raw=" + nuditySlider + "&callthreshold_nudity_partial=" + nuditySlider +
@@ -256,7 +255,8 @@
                     console.log(a);
                     console.log(url);
                     console.log(a.media.id);
-//                    window.location = "http://watchsafehtv.us-east-1.elasticbeanstalk.com/response/" + callback_id;
+//                    window.location.href = window.location.protocol + "//" + window.location.host + "/response/" + callback_id;
+                    window.location = "http://watchsafehtv.us-east-1.elasticbeanstalk.com/response/" + callback_id;
                 },
                 error: (a, b, c) => {
                     console.log(a);

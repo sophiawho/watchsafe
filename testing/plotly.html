@@ -1,0 +1,52 @@
+<head>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<p>
+    Here's a simple Plotly plot -
+    <a href="https://bit.ly/1Or9igj">plotly.js documentation</a>
+</p>
+
+<!-- Plots go in blank <div> elements. 
+    You can size them in the plot layout,
+    or give the div a size as shown here.
+-->
+<div id="tester" style="width:90%;height:550px;"></div>
+<script>
+    TESTER = document.getElementById('tester');
+    var x = [0, 1 , 2 ,3 ];
+    var data = [
+        {
+            x: x,
+            y: [1, 0.1, 1, 0.9],
+            name: 'Nudity'
+        },
+        {
+            x: x,
+            y: [0.2, 0.01, 0, 0],
+            name: 'Weapon'
+        }
+    ];
+    var layout = {
+        title: 'Title of the Graph',
+        hovermode: 'closest',
+        xaxis: {
+            title: 'Time',
+            autotick: false,
+            tick0: 0,
+            dtick: 1
+        },
+        yaxis: {
+            title: 'Value',
+            dtick: 0.1,
+            autotick: false
+        }
+    };
+    
+    Plotly.newPlot(TESTER, data, layout);
+
+    /* Current Plotly.js version */
+    console.log(Plotly.BUILD);
+
+</script>
