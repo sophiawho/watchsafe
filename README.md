@@ -9,10 +9,10 @@
 ![Image Not Found](preview2.png)
 
 ## Loading Page
-![Image Not Found](preview3.png)
-![GIF not found](https://media.giphy.com/media/23aJNISnRnMcXT9RTD/giphy.gif)
+![GIF not found](http://www.giphy.com/gifs/jxdXhat9e6xGSzI1Wo)
 
 ## Analytics Page
+![Image Not Found](preview4.png)
 
 ## Pitch
 
