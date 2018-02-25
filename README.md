@@ -4,6 +4,11 @@
 
 *watchsafe* uses **computer vision** to scan video clips for nsfw content by flagging the start and end of the nsfw content, and displaying the type of nsfw content (drugs/nudity/gore).
 
+### Links
+* [Try It Out](https://www.watchingyour.tech "Try It Out")
+* [Video Demo](https://www.youtube.com/watch?v=_Wwa5B8vHKo "Video Demo")
+* [Devpost](https://devpost.com/software/watchsafe "See WatchSafe on DevPost")
+
 ## Landing Page
 ![Image Not Found](preview1.png)
 ![Image Not Found](preview2.png)
@@ -34,6 +39,5 @@ In the future, we'd like to:
 * Flask back-end
 * Deployed on Amazon AWS
 
-### Links
-* [Video Demo](https://www.youtube.com/watch?v=_Wwa5B8vHKo "Video Demo")
-* [Devpost](https://devpost.com/software/watchsafe "Devpost")
+### Getting Started
+Look in our /good folder for production-ready code.
