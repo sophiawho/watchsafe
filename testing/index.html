@@ -1,118 +1,222 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Page Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WatchSafe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
     <style>
-        body {
-            margin: 0;
-            height: 90vh;
-        }
-        .nav {
-            width: 100%;
-            height: 50px;
-            position: fix;
-            top: 0;
-            background-color: black;
-            display: flex;
-            align-items: center;
-        }
-        .logo {
-            width: 200px;
-            margin-left: 5px;
-        }
-        .content {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            flex-direction: column;
-            justify-content: center;
-        }
-        #ask-input {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            flex-direction: column;
-            justify-content: center;
-        }
-        #type-input {
-            width: 250px;
-            height: 25px;
-            border-radius: 10px;
-            border: 2px solid #4CAF50;
-        }
-        .user-input {
-            display: flex;
-            flex-direction: column;
-        }
-        #type-input {
-            outline: none;
-            padding: 0 10px;
-        }
-        #file-input {
-            width: 190px;
-            margin-top: 4px;
-            margin-left: 8px;
-        }
-        .submit-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 39px;
-        }
-        #submit {
-            border-radius: 10px;
-            border: 2px solid #4CAF50;
-            width: 80px;
-            height: 25px;
-            background-color: #5fa862;
-            outline: none;
-        }
-        #show-data {
-            display:none;
-        }
+
+      body {
+        background: url("suzy.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      .slidecontainer {
+          width: 100%;
+      }
+
+      .slider {
+          -webkit-appearance: none;
+          width: 100%;
+          height: 25px;
+          background: white;
+          outline: none;
+          opacity: 0.7;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          margin-left: 5px;
+          margin-right: 5px;
+      }
+
+      .slider:hover {
+          opacity: 1;
+      }
+
+      .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+
+      .slider::-moz-range-thumb {
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+
+      .badge{
+          margin-top: 15px;
+          height: 15px;
+      }
+
+      #transp{
+        width: 95px;
+        background-color:transparent;
+        border: none;
+      }
+
+      #type-input{
+        opacity: 0.7;
+        margin-bottom: 5px;
+      }
+
+      #type-input:hover{
+        opacity: 1;
+      }
+
+      #submit{
+        margin-top: 10px;
+      }
+
+      #output1{
+        background-color: transparent;
+      }
+      #output2{
+        background-color: transparent;
+      }
+      #output3{
+        background-color: transparent;
+      }
+      #output4{
+        background-color: transparent;
+      }
+
     </style>
 
-</head>
-<body>
-    <div class="nav">
-        <img src="https://i.imgur.com/UVT2JZu.png"
-             alt="genesys logo"
-             class="logo"
-        />
-    </div>
-    <div class="content">
-        <div id="ask-input">
-            <h1 style=" margin: 0; font-size: 55px;"> Welcome to Genscribe</h1>
-            <h3 style=" margin-top: 5px; margin-bottom: 40px;"> The best audio analyser for your meeting</h3>
-            <form style="display: flex" onsubmit="myFunction(); return false;">
-                <div class="user-input">
-                    <input id="type-input" type="text" value="Audio Url Link" autocomplete="off"/>
-                    Alcohol threshold:
-                    <input type="range" id="alcohol" min="0" max="1" step=any value="0.5">
-                    Drugs threshold:
-                    <input type="range" id="drugs" min="0" max="1" step=any value="0.5">
-                    Nudity threshold:
-                    <input type="range" id="nudity" min="0" max="1" step=any value="0.5">
-                    Weapon threshold:
-                    <input type="range" id="weapon" min="0" max="1" step=any value="0.5">
-<!--                     <input id="file-input" type="file" value="Audio File"/>
- -->                </div>
-                <div class="submit-container">
-                    <input id="submit" type="submit" value="Submit" />
-                </div>
-            </form>
-        </div>
-        <div id="show-data">
-            <H4>List of Topic:</H4>
-            <div id="topic-list">
-            </div>
-            <button onclick="tryAgain()">Try Another</button>
-        </div>
-    </div>
+  </head>
 
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Back to Top</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://github.com/rockleeisthegoat/watchsafe">Fork Me On Github</a>
+            </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="brand-heading">WatchSafe</h1>
+              <p class="intro-text">WatchSafe uses computer vision to scan video clips for NSFW content.
+                <br>Created at Hack the Valley II.</p>
+              <a href="#about" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Welcome to WatchSafe.</h2>
+            <p>We use a pre-trained <a href="https://sightengine.com/">computer vision model</a> to scan your video, and flag unsafe content. Enter your video URL and adjust thresholds as needed.</p>
+
+                        <form onsubmit="myFunction(); return false;">
+                            <div class="user-input">
+                                <div class="d-flex justify-content-between">
+                                <input id="type-input" class="form-control form-control-sm" type="text" placeholder="https://"/>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Alcohol</button>
+                                <input class="slider" type="range" id="alcohol" min="0" max="1.0" step=0.1 value="1" list="steplist" oninput="outputUpdate1(value)">
+                                <span class="badge badge-secondary" id="output1">1.0</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Drugs</button>
+                                <input class="slider" type="range" id="drugs" min="0" max="1" step=0.1 value="1" list="steplist" oninput="outputUpdate2(value)">
+                                <span class="badge badge-secondary" id="output2">1.0</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Nudity</button>
+                                <input class="slider" type="range" id="nudity" min="0" max="1" step=0.1 value="1" list="steplist" oninput="outputUpdate3(value)">
+                                <span class="badge badge-secondary" id="output3">1.0</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Weapons</button>
+                                <input class="slider" type="range" id="weapon" min="0" max="1" step=0.1 value="1" list="steplist" oninput="outputUpdate4(value)">
+                                <span class="badge badge-secondary" id="output4">1.0</span>
+                                </div>
+
+                                <datalist id="steplist">
+                                    <option>0</option>
+                                    <option>0.1</option>
+                                    <option>0.2</option>
+                                    <option>0.3</option>
+                                    <option>0.5</option>
+                                    <option>0.6</option>
+                                    <option>0.7</option>
+                                    <option>0.8</option>
+                                    <option>0.9</option>
+                                    <option>1.0</option>
+                                </datalist>
+
+                                <div class="submit-container">
+                                <input id="submit" type="submit" class="btn btn-default btn-lg" value="Submit" />
+                                </div>
+
+                            </div>
+                            
+                        </form>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
     <script>
-        function myFunction() {
+
+      function myFunction() {
 //   'https://api.sightengine.com/1.0/video/check.json?models=nudity,wad,faces,face-attributes,celebrities&stream_url=https://wowza.jwplayer.com/live/jelly.stream/playlist.m3u8&callback_url=protocol://yourcallback&api_user=258566145&api_secret=nGGUMmk7CsQ6463MHQjY'
 // '1051134213', 'NHSHEEAmrEdxkapSmt8F'
 //            var url = window.location.protocol + "//" + window.location.host + "/insert
@@ -158,34 +262,32 @@
             })
         }
 
-        function displayData(data) {
-            data = data.slice(1,-1).replace(/'/g, "").split(",");
-            list = '<ul>';
-            data.forEach(function(element) {
-                list += '<li>' + element + '</li>';
-            });
-            list += '</ul>';
-            document.getElementById('topic-list').innerHTML = list;
-
-            $('#ask-input').hide();
-            $('#show-data').show();
+        function outputUpdate1(vol) {
+            document.getElementById("output1").innerHTML = vol;
         }
 
-        $("#type-input").focus(function() {
-            $("#type-input").val("");
-        })
-
-        $("#type-input").blur(function() {
-           if ($("#type-input").val() === "") {
-                $("#type-input").val("Audio Url Link");
-           }
-        })
-
-        function tryAgain() {
-            $('#ask-input').show();
-            $('#show-data').hide();
-            $("#type-input").val("Audio Url Link");
+        function outputUpdate2(vol) {
+            document.getElementById("output2").innerHTML = vol;
         }
+
+        function outputUpdate3(vol) {
+            document.getElementById("output3").innerHTML = vol;
+        }
+
+        function outputUpdate4(vol) {
+            document.getElementById("output4").innerHTML = vol;
+        }
+
     </script>
-</body>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+
+  </body>
+
 </html>
