@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WatchSafe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- Custom fonts for this template -->
+    <link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/grayscale.min.css" rel="stylesheet">
+    
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+    <style>
+      body {
+        background: url("static/img/suzy.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      .slidecontainer {
+          width: 100%;
+      }
+
+      .slider {
+          -webkit-appearance: none;
+          width: 100%;
+          height: 25px;
+          background: white;
+          outline: none;
+          opacity: 0.7;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          margin-left: 5px;
+          margin-right: 5px;
+      }
+
+      .slider:hover {
+          opacity: 1;
+      }
+
+      .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+
+      .slider::-moz-range-thumb {
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+
+      .badge{
+          margin-top: 15px;
+          height: 15px;
+      }
+
+      #transp{
+        width: 95px;
+        background-color:transparent;
+        border: none;
+      }
+
+      #type-input{
+        opacity: 0.7;
+        margin-bottom: 5px;
+      }
+
+      #type-input:hover{
+        opacity: 1;
+      }
+
+      #submit{
+        margin-top: 10px;
+      }
+
+      #output1{
+        background-color: transparent;
+      }
+      #output2{
+        background-color: transparent;
+      }
+      #output3{
+        background-color: transparent;
+      }
+      #output4{
+        background-color: transparent;
+      }
+
+    </style>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Back to Top</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://github.com/rockleeisthegoat/watchsafe">Fork Me On Github</a>
+            </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="brand-heading">WatchSafe</h1>
+              <p class="intro-text">WatchSafe uses computer vision to scan video clips for NSFW content.
+                <br>Created at Hack the Valley II.</p>
+              <a href="#about" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Welcome to WatchSafe.</h2>
+            <p>We use a pre-trained <a href="https://sightengine.com/">computer vision model</a> to scan your video, and flag unsafe content. Enter your video URL and adjust thresholds as needed.</p>
+                        <form onsubmit="myFunction(); return false;">
+                            <div class="user-input">
+                                <div class="d-flex justify-content-between">
+                                <input id="type-input" class="form-control form-control-sm" type="text" placeholder="https://"/>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Alcohol</button>
+                                <input class="slider" type="range" id="alcohol" min="0" max="1.0" step=0.1 value="1" list="steplist" oninput="outputUpdate1(value)">
+                                <span class="badge badge-secondary" id="output1">1.0</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Drugs</button>
+                                <input class="slider" type="range" id="drugs" min="0" max="1" step=0.1 value="1" list="steplist" oninput="outputUpdate2(value)">
+                                <span class="badge badge-secondary" id="output2">1.0</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Nudity</button>
+                                <input class="slider" type="range" id="nudity" min="0" max="1" step=0.1 value="1" list="steplist" oninput="outputUpdate3(value)">
+                                <span class="badge badge-secondary" id="output3">1.0</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                <button id="transp" type="button" class="btn btn-secondary">Weapons</button>
+                                <input class="slider" type="range" id="weapon" min="0" max="1" step=0.1 value="1" list="steplist" oninput="outputUpdate4(value)">
+                                <span class="badge badge-secondary" id="output4">1.0</span>
+                                </div>
+                                </div>
+
+                                <datalist id="steplist">
+                                    <option>0</option>
+                                    <option>0.1</option>
+                                    <option>0.2</option>
+                                    <option>0.3</option>
+                                    <option>0.5</option>
+                                    <option>0.6</option>
+                                    <option>0.7</option>
+                                    <option>0.8</option>
+                                    <option>0.9</option>
+                                    <option>1.0</option>
+                                </datalist>
+
+                                <div class="submit-container">
+                                <input id="submit" type="submit" class="btn btn-default btn-lg" value="Submit" />
+                                </div>
+
+                            </div>
+                            
+                        </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+        $(document).ready(function() {
+            // start up the SocketIO connection to the server - the namespace 'test' is also included here if necessary
+            var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
+            console.log(socket);
+            // this is a callback that triggers when the "my response" event is emitted by the server.
+            socket.on('my response', function(msg) {
+//                $('#log').append('<p>Received: ' + msg.data + '</p>');
+                console.log('Received' + msg.data);
+            });
+        })
+
+      function myFunction() {
+//            var url = window.location.protocol + "//" + window.location.host + "/insert
+            var prefix = "https://api.sightengine.com/1.0/video/check.json?models=nudity,wad,faces,face-attributes,celebrities&stream_url=";
+            var inputLink = $("#type-input").val(); // make sure form input has https://
+            var alcoholSlider = $("#alcohol").val();
+            var drugSlider = $("#drugs").val();
+            var nuditySlider = $("#nudity").val();
+            var weaponSlider = $("#weapon").val();
+            console.log("Alcohol: +" + alcoholSlider);
+//            var suffix = "&callback_url=" + window.location.protocol + "//" + window.location.host + "/callback";
+            var suffix = "&callback_url=https://watchsafe.azurewebsites.net/";
+            var credentials = "&api_user=1051134213&api_secret=NHSHEEAmrEdxkapSmt8F"
+            var thresholds = "&callthreshold_nudity_raw=" + nuditySlider + "&callthreshold_nudity_partial=" + nuditySlider +
+                "&callthreshold_weapon=" + weaponSlider + "&callthreshold_alcohol=" + alcoholSlider + "&callthreshold_drugs=" + drugSlider;
+            var url = prefix + inputLink + suffix + 'callback' + credentials + thresholds;
+            console.log("URL: " + url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: (a, b, c) => {
+                    var callback_id = a.media.id;
+                    var redir_url = prefix + inputLink + suffix + callback_id + credentials;
+                    console.log(a);
+                    console.log(url);
+                    console.log(a.media.id);
+//                    window.location.href = window.location.protocol + "//" + window.location.host + "/response/" + callback_id;
+                    window.location = "https://watchsafe.azurewebsites.net/response/" + callback_id;
+                },
+                error: (a, b, c) => {
+                    console.log(a);
+                }
+            })
+        }
+        function outputUpdate1(vol) {
+            document.getElementById("output1").innerHTML = vol;
+        }
+
+        function outputUpdate2(vol) {
+            document.getElementById("output2").innerHTML = vol;
+        }
+
+        $("#type-input").blur(function() {
+            if ($("#type-input").val() === "") {
+                $("#type-input").val("Audio Url Link");
+            }
+        })
+        function outputUpdate3(vol) {
+            document.getElementById("output3").innerHTML = vol;
+        }
+
+        function outputUpdate4(vol) {
+            document.getElementById("output4").innerHTML = vol;
+        }
+
+    </script>
+</body>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Plugin JavaScript -->
+<!--    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
+
+
+
+  </body>
+</html>

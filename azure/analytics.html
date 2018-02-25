@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WatchSafe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- Custom fonts for this template -->
+    <link href="https://s3.amazonaws.com/watchsafe/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="https://s3.amazonaws.com/watchsafe/static/css/grayscale.min.css" rel="stylesheet">
+    
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <!-- Import plot.ly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+    <style>
+
+    /*Styling loading ball*/
+
+    .fond {
+            position: absolute;
+            padding-top: 335px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .contener_ball {
+            height: 115px;
+            width: 90px;
+            overflow: hidden;
+        }
+
+        .ball_bleu {
+            border-radius: 30px;
+            width: 30px;
+            -webkit-animation: anim 1s infinite ease;
+            -moz-animation: anim 1s infinite ease;
+            -ms-animation: anim 1s infinite ease;
+            -o-animation: anim 1s infinite ease;
+            animation: anim 1s infinite ease;
+        }
+
+        .ombre_bleu {
+            border-radius: 30px;
+            display: inline-block;
+            background-color: rgba(153, 153, 153, 0.2);
+            box-shadow: 1px 1px 8px #999999;
+            -webkit-animation: anim_ombre 1s infinite ease;
+            -moz-animation: anim_ombre 1s infinite ease;
+            -ms-animation: anim_ombre 1s infinite ease;
+            -o-animation: anim_ombre 1s infinite ease;
+            animation: anim_ombre 1s infinite ease;
+        }
+
+        @-webkit-keyframes anim {
+            0% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+            25% {
+                height: 15px;
+                margin-top: 100px;
+                background-color: #746823;
+            }
+            100% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+        }
+
+        @-webkit-keyframes anim_ombre {
+            0% {
+                width: 90px;
+                height: 2px;
+            }
+            25% {
+                width: 30px;
+                height: 2px;
+            }
+            100% {
+                width: 90px;
+                height: 2px;
+            }
+        }
+
+        @-moz-keyframes anim {
+            0% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+            25% {
+                height: 15px;
+                margin-top: 100px;
+                background-color: #746823;
+            }
+            100% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+        }
+
+        @-moz-keyframes anim_ombre {
+            0% {
+                width: 90px;
+                height: 2px;
+            }
+            25% {
+                width: 30px;
+                height: 2px;
+            }
+            100% {
+                width: 90px;
+                height: 2px;
+            }
+        }
+
+        @-ms-keyframes anim {
+            0% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+            25% {
+                height: 15px;
+                margin-top: 100px;
+                background-color: #746823;
+            }
+            100% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+        }
+
+        @-ms-keyframes anim_ombre {
+            0% {
+                width: 90px;
+                height: 2px;
+            }
+            25% {
+                width: 30px;
+                height: 2px;
+            }
+            100% {
+                width: 90px;
+                height: 2px;
+            }
+        }
+
+        @keyframes anim {
+            0% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+            25% {
+                height: 15px;
+                margin-top: 100px;
+                background-color: #746823;
+            }
+            100% {
+                height: 30px;
+                margin-top: 0px;
+                background-color: #529869;
+            }
+        }
+
+        @keyframes anim_ombre {
+            0% {
+                width: 90px;
+                height: 2px;
+            }
+            25% {
+                width: 30px;
+                height: 2px
+            }
+            100% {
+                width: 90px;
+                height: 2px;
+            }
+        }
+
+      body {
+        background: url("https://s3.amazonaws.com/watchsafe/static/img/suzy.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      #myDiv
+      {
+        opacity: 0.5;
+      }
+
+      #myDiv:hover
+      {
+        opacity: 0.8;
+      }
+
+      .hvr-hollow {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px transparent;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: background;
+        transition-property: background;
+        box-shadow: inset 0 0 0 4px #e1e1e1, 0 0 1px transparent;
+        /* Hack to improve aliasing on mobile/tablet devices */
+      }
+      .hvr-hollow:hover, .hvr-hollow:focus, .hvr-hollow:active {
+        background: none;
+      }
+
+
+    </style>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="https://watchsafe.azurewebsites.net/">Analyze Another Video</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://github.com/rockleeisthegoat/watchsafe">Fork Me On Github</a>
+            </li>>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <h1>WatchSafe Analytics</h1>
+            <p>We use a pre-trained <a href="https://sightengine.com/">computer vision model</a> to scan your video and flag unsafe content.</p>
+
+            <!-- Spinner -->
+            <div id="spinner">
+              <div align="center" class="fond">
+                  <div align="center">
+                      <div class="contener_ball">
+                          <div class="ball_bleu"></div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Plot.ly div -->
+
+            <div id="plotly" class="hvr-hollow" style="width:100%;"></div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+</body>
+
+    <!-- Static Plotly.js chart-->
+    <script>
+    var transparentcolor = "rgba(0,0,0,0)" 
+    var bgcolor = "rgb(114, 168, 61)"; // background color
+
+//    var trace1 = {
+//      x: [0, 1, 2, 3, 4, 5, 6],
+//      y: [1, 9, 4, 7, 5, 2, 4],
+//      mode: 'markers',
+//      marker: {
+//        size: [20, 40, 25, 10, 60, 90, 30],
+//      }
+//    };
+//
+//    var data = [trace1];
+
+    
+    $(document).ready(function() {
+        // JQuery event listener for hovering over chart
+        $('#plotly').hover( () => {
+            // do something
+//            layout = {
+//              paper_bgcolor: transparentcolor,
+//              plot_bgcolor: transparentcolor,
+//              title: 'This should be the dynamic URL, or no title at all',
+//              showlegend: false};
+//            Plotly.newPlot('myDiv', data, layout, {staticPlot: false});
+//                });
+        });
+        myPlot = document.getElementById('plotly');
+        var myData = [{
+                x: [],
+                y: [],
+                name: 'Nudity'
+            },
+            {
+                x: [],
+                y: [],
+                name: 'Violence'
+            },
+            {
+                x: [],
+                y: [],
+                name: 'Drugs'
+            },
+            {
+                x: [],
+                y: [],
+                name: 'Alcohol'
+            },
+            {
+                x: [],
+                y: [],
+                name: 'Overall Safeness'
+            }
+        ];
+        var layout = {
+            hovermode: 'closest',
+            xaxis: {
+                title: 'Time',
+                autotick: false,
+                tick0: 0,
+                dtick: 1
+            },
+            yaxis: {
+                title: 'Value',
+                dtick: 0.1,
+                autotick: false,
+                range: [0, 1],
+                autorange: false
+            },
+            paper_bgcolor: transparentcolor,
+            plot_bgcolor: transparentcolor
+        };
+        var x = []
+        
+        // start up the SocketIO connection to the server - the namespace 'test' is also included here if necessary
+        var url_split = window.location.href.split('/');
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/' + url_split[url_split.length - 1]);
+        console.log(socket);
+        // this is a callback that triggers when the "my response" event is emitted by the server.
+        socket.on('my response', function(msg) {
+            //                $('#log').append('<p>Received: ' + msg.data + '</p>');
+            // hide jQuery
+            $("spinner").hide("slow");
+            // log success in console
+            console.log('Received' + JSON.stringify(msg));
+            msg.data.frames.forEach((element, index) => {
+//                x.push(index);
+//                myData[0].y.push(element.nudity.raw);
+//                myData[1].y.push(element.weapon);
+//                myData[2].y.push(element.drugs);
+//                myData[3].y.push(element.alcohol);
+//                myData[4].y.push(element.nudity.safe);
+                x[index] = index;
+                myData[0].y[index] = element.nudity.raw;
+                myData[1].y[index] = element.weapon;
+                myData[2].y[index] = element.drugs;
+                myData[3].y[index] = element.alcohol;
+            });
+            myData.forEach(element => {
+                element.x = x;
+            });
+            console.log('my data: ' + JSON.stringify(myData[myData.length - 1]));
+            Plotly.newPlot(myPlot, myData, layout);
+        });
+    })
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Plugin JavaScript -->
+<!--    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
+</html>
