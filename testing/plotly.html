@@ -15,17 +15,26 @@
 <div id="tester" style="width:90%;height:550px;"></div>
 <script>
     TESTER = document.getElementById('tester');
-    var x = [0, 1 , 2 ,3 ];
     var data = [
         {
             x: x,
-            y: [1, 0.1, 1, 0.9],
+            y: nudey,
             name: 'Nudity'
         },
         {
             x: x,
-            y: [0.2, 0.01, 0, 0],
+            y: weapony,
             name: 'Weapon'
+        }, 
+        {
+            x: x,
+            y: alcoholy,
+            name: 'Alcohol'
+        }, 
+        {
+            x: x, 
+            y: drugsy
+            name: 'Drugs'
         }
     ];
     var layout = {
@@ -50,3 +59,5 @@
     console.log(Plotly.BUILD);
 
 </script>
+
+
