@@ -4,8 +4,12 @@ import jsonify
 import json
 from sightengine.client import SightengineClient
 import requests
+# from flask.ext.socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit
 
 application = Flask(__name__)
+application.config['SECRET_KEY'] = 'secret!'
+socketio = SocketIO(application)
 application.debug = True
 CORS(application)
 
@@ -14,27 +18,28 @@ CORS(application)
 def hello():
     # return "Hello World"
     content = open('index.html').read()
+    # emit('my response', {'data': 'got it!'})
     return Response(content, mimetype="text/html")
 
-
-# @application.route("/callback", methods={'GET'})
-# def myFunc():
-#     return
+@application.route("/test")
+def uh():
+    socketio.emit('my response', {'data': 'got it!'}, namespace='/test')
+    return "yes"
 
 # dynamic response
-@application.route("/response/<id>", methods=['GET', 'POST'])
+@application.route("/response/<id>", methods=['GET', 'PUT'])
 def lala(id):
     if request.method == 'GET':
-        return 'ID: %s' % id
+        content = open('loading.html').read()
+        return Response(content, mimetype="text/html")
     else:
         thisData = json.dumps(request.json)
-        print("hi" + thisData)
-        return("received post" + thisData)
+        print("hi")
+        return("received post")
 
 @application.route("/test", methods=['POST'])
 def whee():
     return "success"
-
 
 @application.route("/callback", methods=['POST'])
 def callback():
@@ -44,13 +49,19 @@ def callback():
         return 'success'
     else:
         if (data['data']['status'] == 'finished'):
-            url_id = data['media']['id']
-            url = "http://watchsafehtv.us-east-1.elasticbeanstalk.com/response/" + url_id
-            r = requests.post(url, data=data)
-            return('yay')
+            # url_id = data['media']['id']
+            # url = "http://watchsafehtv.us-east-1.elasticbeanstalk.com/response/" + url_id
+            # print("finished " + url)
+            # r = requests.put(url, data=data)
+            # print('reeee' + r.text)
+            # return('yay')
+            socketio.emit('my response', data, namespace='/'+data['media']['id'])
+            return('', 200)
         else:
+            print("not finished")
+            socketio.emit('my response', data, namespace='/'+data['media']['id'])
             return('', 204)
 
 
 if __name__ == "__main__":
-    application.run()
+    socketio.run(application)
