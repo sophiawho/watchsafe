@@ -10,6 +10,7 @@
 
 ## Loading Page
 ![Image Not Found](preview3.png)
+![GIF not found](loading.gif)
 
 ## Analytics Page
 
