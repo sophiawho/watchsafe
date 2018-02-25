@@ -8,9 +8,6 @@
 ![Image Not Found](preview1.png)
 ![Image Not Found](preview2.png)
 
-## Loading Page
-![GIF not found](loading.gif)
-
 ## Analytics Page
 ![Image Not Found](preview4.png)
 
