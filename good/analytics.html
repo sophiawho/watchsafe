@@ -36,7 +36,7 @@
 
     .fond {
             position: absolute;
-            padding-top: 335px;
+            padding-top: 235px;
             top: 0;
             left: 0;
             right: 0;
@@ -224,14 +224,14 @@
       
       @-webkit-keyframes hvr-pop {
         50% {
-          -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
         }
       }
       @keyframes hvr-pop {
         50% {
-          -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
         }
       }
       .hvr-pop {
@@ -285,6 +285,9 @@
             <h1>WatchSafe Analytics</h1>
             <p>We use a pre-trained <a href="https://sightengine.com/">computer vision model</a> to scan your video and flag unsafe content.</p>
 
+            <!-- Plot.ly div -->
+            <div id="plotly" class="hvr-pop" style="width:100%;"></div>
+
             <!-- Spinner -->
             <div id="spinner">
               <div align="center" class="fond">
@@ -296,10 +299,6 @@
               </div>
             </div>
 
-            <!-- Plot.ly div -->
-
-            <div id="plotly" class="hvr-pop" style="width:100%;"></div>
-
           </div>
         </div>
       </div>
@@ -309,7 +308,7 @@
 
     <!-- Static Plotly.js chart-->
     <script>
-    var transparentcolor = "rgba(0,0,0,0)" 
+    var transparentcolor = "rgba(0,0,0,0)"; 
     var bgcolor = "rgb(114, 168, 61)"; // background color
 
 //    var trace1 = {
@@ -374,17 +373,7 @@
             var myData = [Nudity, Violence, Drugs, Alcohol];
 
         var x = [];
-        // var myJson = {'media': {'id': 'med_2xvAKVtKBJNZHiYvZJZyu', 'uri': 'https://video.twimg.com/tweet_video/DWlS4OxVMAAlCsh.mp4'}, 'request': 'req_2xvAw9aiH1AGdWzvorsUl', 'data': {'status': 'finished', 'started': 1519556816.698, 'last_update': 1519556819.1041, 'frames': [{'info': {'id': 'med_2xvAKVtKBJNZHiYvZJZyu_1', 'position': 0}, 'weapon': 0.3, 'alcohol': 0, 'drugs': 0, 'nudity': {'raw': 0.60145, 'partial': 0.39851, 'safe': 4e-05}, 'faces': []}, {'info': {'id': 'med_2xvAKVtKBJNZHiYvZJZyu_2', 'position': 1000}, 'weapon': 0.5, 'alcohol': 0, 'drugs': 0, 'nudity': {'raw': 0.58569, 'partial': 0.41427, 'safe': 4e-05}, 'faces': []}, {'info': {'id': 'med_2xvAKVtKBJNZHiYvZJZyu_3', 'position': 2000}, 'weapon': 0.7, 'alcohol': 0, 'drugs': 0, 'nudity': {'raw': 0.54717, 'partial': 0.45269, 'safe': 0.00014}, 'faces': []}, {'info': {'id': 'med_2xvAKVtKBJNZHiYvZJZyu_4', 'position': 3000}, 'weapon': 0.8, 'alcohol': 0.001, 'drugs': 0.001, 'nudity': {'raw': 0.5813, 'partial': 0.41859, 'safe': 0.00011}, 'faces': []}]}};
-        // myJson.data.frames.forEach( (element, index) => {
-        //     x[index] = index;
-        //     myData[0].y[index] = element.nudity.raw;
-        //     myData[1].y[index] = element.weapon;
-        //     myData[2].y[index] = element.drugs;
-        //     myData[3].y[index] = element.alcohol;
-        // });
-        // myData.forEach(element => {
-        //     element.x = x;
-        // });
+
         var layout = {
             hovermode: 'closest',
             
@@ -399,7 +388,8 @@
                 showline: false,
                 autotick: true,
                 ticks: '',
-                showticklabels: false
+                showticklabels: false,
+                zerolinecolor: '#ffffff'
             },
             yaxis: {
                 title: 'Moderation Threshold',
@@ -412,7 +402,8 @@
                 showline: false,
                 autotick: true,
                 ticks: '',
-                showticklabels: false
+                showticklabels: false,
+                zerolinecolor: '#ffffff'
             },
             paper_bgcolor: transparentcolor,
             plot_bgcolor: transparentcolor,
@@ -461,6 +452,7 @@
                 autotick: false,
                 tick0: 0,
                 dtick: 1,
+                zerolinecolor: '#ffffff'
             },
             yaxis: {
                 title: 'Moderation Threshold',
@@ -468,6 +460,7 @@
                 autotick: false,
                 range: [0, 1],
                 autorange: false
+                zerolinecolor: '#ffffff'
             },
             paper_bgcolor: transparentcolor,
             plot_bgcolor: transparentcolor,
