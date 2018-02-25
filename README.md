@@ -8,7 +8,13 @@
 ![Image Not Found](preview1.png)
 ![Image Not Found](preview2.png)
 
-## pitch
+## Loading Page
+![Image Not Found](preview3.png)
+![GIF not found](https://media.giphy.com/media/23aJNISnRnMcXT9RTD/giphy.gif)
+
+## Analytics Page
+
+## Pitch
 
 So online censorship. What’s the problem with it? Well, first of all, a human has to spend time watching the entire video, then they tag the video as NSFW. The entire video gets flagged - like in movie theatres, movies get rated R. But - why is that? What if there was a better way to do it? Think about movies like Apocalypse Now - movies with violent scenes that aren’t necessarily integral to the plot.
 
