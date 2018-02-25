@@ -4,6 +4,10 @@
 
 *watchsafe* uses **computer vision** to scan video clips for nsfw content by flagging the start and end of the nsfw content, and displaying the type of nsfw content (drugs/nudity/gore).
 
+## Landing Page
+![Image Not Found]("preview1.png")
+![Image Not Found]("preview2.png")
+
 ## pitch
 
 So online censorship. What’s the problem with it? Well, first of all, a human has to spend time watching the entire video, then they tag the video as NSFW. The entire video gets flagged - like in movie theatres, movies get rated R. But - why is that? What if there was a better way to do it? Think about movies like Apocalypse Now - movies with violent scenes that aren’t necessarily integral to the plot.
@@ -17,9 +21,9 @@ So this has so many applications. Parents can use this when showing movies to ki
 So this is our demo, we have it rigged so you can change the threshold. The automatic threshold is 0.5, and we can adjust it based on how much we want to be censored.
 
 ### technology:
-1. clarifai/microsoft custom vision
+1. sightengine
 2. python (flask)
-3. node.js backend
+3. deployed on microsoft azure
 
 ### challenges:
 1. rate-limiting api
