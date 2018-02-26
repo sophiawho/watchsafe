@@ -7,7 +7,7 @@
 ### Links
 * [Try It Out](https://www.watchingyour.tech "Try It Out")
 * [Video Demo](https://www.youtube.com/watch?v=_Wwa5B8vHKo "Video Demo")
-* [Devpost](https://devpost.com/software/watchsafe "See WatchSafe on DevPost")
+* [See Me on DevPost](https://devpost.com/software/watchsafe "See WatchSafe on DevPost")
 
 ## Landing Page
 ![Image Not Found](preview1.png)
