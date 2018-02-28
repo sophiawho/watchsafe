@@ -7,7 +7,7 @@
 WatchSafe uses WebSocket to do the analysis in real-time, and will not only tell you where the inappropriate content is, but also automatically censor the content for you.
 
 ## Demo
-You can check out WatchSafe at https://www.watchingyour.tech. Folow the steps below: 
+You can check out WatchSafe at http://www.watchingyour.tech. Folow the steps below: 
 * Set the sliders to 0.6 or lower to see the video processed in real-time.
 * Use https://s3.amazonaws.com/watchsafe/video-1519531020.mp4 as the video URL. This video has a mix of regular scenes, violence and alcohol.
 
