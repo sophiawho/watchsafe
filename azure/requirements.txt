@@ -1,7 +1,7 @@
 Flask==0.12.2
 Flask-Cors==3.0.3
 Flask-SocketIO==2.9.3
-Jinja2==2.10
+Jinja2==2.11.3
 jsonify==0.5
 jsonschema==2.5.1
 MarkupSafe==1.0
